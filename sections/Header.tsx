@@ -1,100 +1,34 @@
 
-import { h } from "preact";
-import { HTMLWidget } from "apps/admin/widgets.ts";
+import { ImageWidget } from 'apps/admin/widgets.ts';
 
-interface Props {
+interface BannerProps {
   /**
    * @format rich-text
    */
-  vision?: string;
-  /**
-   * @format rich-text
-   */
-  mission?: string;
+  title?: string;
   /**
    * @format textarea
    */
-  coreValues?: string;
-  /**
-   * @format textarea
-   */
-  personality?: string;
-  /**
-   * @format rich-text
-   */
-  tagline?: string;
-  /**
-   * @format textarea
-   */
-  targetAudience?: string;
-  /**
-   * @format textarea
-   */
-  keyMessages?: string;
-  /**
-   * @format rich-text
-   */
-  promise?: string;
-  /**
-   * @format textarea
-   */
-  additionalElements?: string;
-  /**
-   * @format rich-text
-   */
-  storytelling?: string;
-  /**
-   * @format textarea
-   */
-  workshopsAndEvents?: string;
-  /**
-   * @format textarea
-   */
-  technologyIntegration?: string;
-  /**
-   * @format rich-text
-   */
-  foundingStory?: string;
+  description?: string;
+  image?: ImageWidget;
 }
 
-export default function BrandOverview({
-  vision = "<p>Our vision is to create a better world through innovative solutions.</p>",
-  mission = "<p>Our mission is to empower people and businesses with cutting-edge technology.</p>",
-  coreValues = "Innovation, Integrity, Collaboration, Excellence",
-  personality = "Passionate, Visionary, Trustworthy, Innovative",
-  tagline = "<h2>Empowering the Future</h2>",
-  targetAudience = "Businesses, Entrepreneurs, Professionals, Tech Enthusiasts",
-  keyMessages = "Cutting-edge solutions, Innovative technology, Empowering growth, Trusted partner",
-  promise = "<p>We promise to deliver exceptional products and services that drive innovation and empower your success.</p>",
-  additionalElements = "Sustainability, Community Engagement, Diversity & Inclusion",
-  storytelling = "<p>Our story began with a dream to revolutionize the way we live and work. Through passion, dedication, and a relentless pursuit of excellence, we have become pioneers in our field.</p>",
-  workshopsAndEvents = "Industry Conferences, Hackathons, Workshops, Networking Events",
-  technologyIntegration = "AI, Machine Learning, Cloud Computing, Blockchain, Internet of Things",
-  foundingStory = "<p>Founded by a team of visionary entrepreneurs, our company was born out of a desire to create innovative solutions that would change the world. With a passion for technology and a commitment to excellence, we embarked on a journey to push the boundaries of what's possible.</p>",
-}: Props) {
+export default function Banner({
+  title = "Discover Our Offer",
+  description = "Check out our amazing products and services. Don't miss this opportunity!",
+  image = "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1818/b0f8ca2d-9c83-48f7-88de-1a6e6d1e9eb7"
+}: BannerProps) {
   return (
-    <div className="container mx-auto p-8">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-4">Vision</h2>
-        <div dangerouslySetInnerHTML={{ __html: vision }} />
+    <div class="bg-yellow-100 text-yellow-900 py-12 px-6 rounded-xl font-display flex items-center animate-slide-left">
+      <img
+        src={image}
+        alt="Banner"
+        class="w-32 h-24 object-cover object-center rounded-xl shadow-lg mr-6"
+      />
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
+        <p class="text-md md:text-lg">{description}</p>
       </div>
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-4">Mission</h2>
-        <div dangerouslySetInnerHTML={{ __html: mission }} />
-      </div>
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-4">Core Values</h2>
-        <p>{coreValues}</p>
-      </div>
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-4">Personality</h2>
-        <p>{personality}</p>
-      </div>
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-4">Tagline</h2>
-        <div dangerouslySetInnerHTML={{ __html: tagline }} />
-      </div>
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-4">Target Audience</h2>
-        <p>{targetAudience}</p>
-      </div>
+    </div>
+  );
+}
